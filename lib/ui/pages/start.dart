@@ -75,6 +75,7 @@ class _StartPageState extends State<StartPage> {
   }
 
   void _goHome() {
+    // Navigate to search page
     context.pushNamed(AppRoutesName.search.name);
   }
 }
