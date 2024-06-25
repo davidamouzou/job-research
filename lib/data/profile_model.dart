@@ -6,8 +6,10 @@ class Profile {
   final double priceHour;
   final double rating;
   final String function;
+  final List<String>? portfolio;
 
-  Profile({required this.id, required this.photoUrl, required this.name, required this.bio, required this.priceHour, required this.rating, required this.function});
+
+  Profile({required this.id, required this.photoUrl, required this.name, required this.bio, required this.priceHour, required this.rating, required this.function, this.portfolio});
 
   
 }
