@@ -18,8 +18,9 @@ class _HomePageState extends State<HomePage> {
         clipBehavior: Clip.none,
         children: [
           Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).scaffoldBackgroundColor,
+            padding: const EdgeInsets.only(top: 10, bottom: 32),
+            decoration: const BoxDecoration(
+              color: Colors.black,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -107,9 +108,9 @@ class _HomePageState extends State<HomePage> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Colors.black26,
+                      color: Colors.black,
                       style: BorderStyle.solid,
-                      width: 4,
+                      width: 8,
                     ),
                   ),
                   child: FloatingActionButton(

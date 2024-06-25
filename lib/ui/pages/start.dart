@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:myapp/routes/routes_name.dart';
@@ -10,6 +12,16 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPageState extends State<StartPage> {
+  double progress1 = 0.0;
+  double progress2 = 0.0;
+  double progress3 = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+    _updateProgress();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,17 +34,63 @@ class _StartPageState extends State<StartPage> {
             children: [
               Row(
                 children: [
-                  for (int i = 0; i < 3; i++)
-                    Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            progress1 = 0.0;
+                            progress2 = 0.0;
+                            progress3 = 0.0;
+                          });
+                        },
                         child: LinearProgressIndicator(
-                          value: i / 3,
+                          value: progress1,
                           borderRadius: BorderRadius.circular(10.0),
                           color: Theme.of(context).textTheme.bodyLarge?.color,
                         ),
                       ),
                     ),
+                  ),
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            progress1 = 1.0;
+                            progress2 = 0.0;
+                            progress3 = 0.0;
+                          });
+                        },
+                        child: LinearProgressIndicator(
+                          value: progress2,
+                          borderRadius: BorderRadius.circular(10.0),
+                          color: Theme.of(context).textTheme.bodyLarge?.color,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            progress1 = 1.0;
+                            progress2 = 1.0;
+                            progress3 = 0.0;
+                          });
+                        },
+                        child: LinearProgressIndicator(
+                          value: progress3,
+                          borderRadius: BorderRadius.circular(10.0),
+                          color: Theme.of(context).textTheme.bodyLarge?.color,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 16.0),
@@ -75,5 +133,27 @@ class _StartPageState extends State<StartPage> {
 
   void _goHome() {
     context.pushNamed(AppRoutesName.search.name);
+  }
+
+  void _updateProgress() {
+    // update progress
+    Timer.periodic(
+      const Duration(milliseconds: 100),
+      (timer) {
+        if (mounted) {
+          setState(() {
+            if (progress1 < 1.0) {
+              progress1 += 0.01;
+            }
+            if (progress2 < 1.0 && progress1 >= 1.0) {
+              progress2 += 0.01;
+            }
+            if (progress3 < 1.0 && progress2 >= 1.0) {
+              progress3 += 0.01;
+            }
+          });
+        }
+      },
+    );
   }
 }

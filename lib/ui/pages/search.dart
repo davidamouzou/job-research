@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:myapp/data/data.dart';
 import 'package:myapp/ui/widgets/profile_card.dart';
@@ -15,6 +16,10 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => context.pop(),
+          icon: const Icon(Iconsax.arrow_left),
+        ),
         centerTitle: true,
         title: const Text("Freelancers"),
         actions: [
