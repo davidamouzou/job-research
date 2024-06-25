@@ -58,6 +58,7 @@ class _StartPageState extends State<StartPage> {
                           onPressed: () {},
                           child: const Text("Find a specialist")),
                     ),
+                    const SizedBox(height: 12.0),
                     SizedBox(
                       width: double.infinity,
                       child: FilledButton(
