@@ -2,5 +2,7 @@ enum AppRoutesName {
   home,
   start,
   search,
-  profileView,
+  profileDetail,
+  profile,
+  task,
 }

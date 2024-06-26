@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:myapp/data/profile_model.dart';
-import 'package:myapp/routes/routes_name.dart';
+import 'package:myapp/utils/routes/routes_name.dart';
 
 class ProfileCard extends StatelessWidget {
   final Profile profile;
@@ -11,7 +11,7 @@ class ProfileCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => context.pushNamed(
-        AppRoutesName.profileView.name,
+        AppRoutesName.profileDetail.name,
         extra: profile,
       ),
       child: Container(
@@ -89,30 +89,34 @@ class ProfileCard extends StatelessWidget {
             const SizedBox(height: 8.0),
             Row(
               children: [
-                OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: Colors.grey,
-                     padding: const EdgeInsets.all(8.0),
-                    side: const BorderSide(
-                      color: Colors.grey,
-                      width: 0.5,
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: Colors.grey,
+                      padding: const EdgeInsets.all(8.0),
+                      side: const BorderSide(
+                        color: Colors.grey,
+                        width: 0.5,
+                      ),
                     ),
+                    child: const Text("Full-time work"),
                   ),
-                  child: const Text("Full-time work"),
                 ),
                 const SizedBox(width: 4),
-                OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.all(8.0),
-                    foregroundColor: Colors.grey,
-                    side: const BorderSide(
-                      color: Colors.grey,
-                      width: 0.5,
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.all(8.0),
+                      foregroundColor: Colors.grey,
+                      side: const BorderSide(
+                        color: Colors.grey,
+                        width: 0.5,
+                      ),
                     ),
+                    child: const Text("2 years of experience"),
                   ),
-                  child: const Text("2 years of experience"),
                 ),
               ],
             ),

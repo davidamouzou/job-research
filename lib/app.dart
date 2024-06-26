@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/routes/app_routes.dart';
-import 'package:myapp/utils/dark.dart';
-import 'package:myapp/utils/light.dart';
+import 'package:myapp/utils/routes/app_routes.dart';
+import 'package:myapp/utils/themes/dark.dart';
+import 'package:myapp/utils/themes/light.dart';
 
 class App extends StatefulWidget {
   const App({super.key});

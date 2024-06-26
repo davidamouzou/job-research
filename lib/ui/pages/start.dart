@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:myapp/routes/routes_name.dart';
+import 'package:myapp/utils/routes/routes_name.dart';
 
 class StartPage extends StatefulWidget {
   const StartPage({super.key});
@@ -12,9 +12,7 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPageState extends State<StartPage> {
-  double progress1 = 0.0;
-  double progress2 = 0.0;
-  double progress3 = 0.0;
+  List<double> progresses = [0.0, 0.0, 0.0];
 
   @override
   void initState() {
@@ -33,65 +31,8 @@ class _StartPageState extends State<StartPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
-                children: [
-                  Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            progress1 = 0.0;
-                            progress2 = 0.0;
-                            progress3 = 0.0;
-                          });
-                        },
-                        child: LinearProgressIndicator(
-                          value: progress1,
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Theme.of(context).textTheme.bodyLarge?.color,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            progress1 = 1.0;
-                            progress2 = 0.0;
-                            progress3 = 0.0;
-                          });
-                        },
-                        child: LinearProgressIndicator(
-                          value: progress2,
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Theme.of(context).textTheme.bodyLarge?.color,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            progress1 = 1.0;
-                            progress2 = 1.0;
-                            progress3 = 0.0;
-                          });
-                        },
-                        child: LinearProgressIndicator(
-                          value: progress3,
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Theme.of(context).textTheme.bodyLarge?.color,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                children:
+                    List.generate(3, (index) => _buildProgressIndicator(index)),
               ),
               const SizedBox(height: 16.0),
               AspectRatio(
@@ -135,6 +76,28 @@ class _StartPageState extends State<StartPage> {
     );
   }
 
+  Widget _buildProgressIndicator(int index) {
+    return Flexible(
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: GestureDetector(
+          onTap: () {
+            setState(() {
+              for (int i = 0; i < progresses.length; i++) {
+                progresses[i] = i < index ? 1.0 : 0.0;
+              }
+            });
+          },
+          child: LinearProgressIndicator(
+            value: progresses[index],
+            borderRadius: BorderRadius.circular(10.0),
+            color: Theme.of(context).textTheme.bodyLarge?.color,
+          ),
+        ),
+      ),
+    );
+  }
+
   void _goHome() {
     // Navigate to search page
     context.pushNamed(AppRoutesName.search.name);
@@ -147,14 +110,11 @@ class _StartPageState extends State<StartPage> {
       (timer) {
         if (mounted) {
           setState(() {
-            if (progress1 < 1.0) {
-              progress1 += 0.01;
-            }
-            if (progress2 < 1.0 && progress1 >= 1.0) {
-              progress2 += 0.01;
-            }
-            if (progress3 < 1.0 && progress2 >= 1.0) {
-              progress3 += 0.01;
+            for (int i = 0; i < progresses.length; i++) {
+              if (progresses[i] < 1.0 && (i == 0 || progresses[i - 1] >= 1.0)) {
+                progresses[i] += 0.01;
+                break;
+              }
             }
           });
         }
