@@ -94,8 +94,11 @@ class _StartPageState extends State<StartPage> {
                 ],
               ),
               const SizedBox(height: 16.0),
-              Image.asset(
-                  "assets/images/${Theme.of(context).brightness == Brightness.dark ? "dark.png" : "light.png"}"),
+              AspectRatio(
+                aspectRatio: 1.2,
+                child: Image.asset(
+                    "assets/images/${Theme.of(context).brightness == Brightness.dark ? "dark.png" : "light.png"}"),
+              ),
               const SizedBox(height: 20.0),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),

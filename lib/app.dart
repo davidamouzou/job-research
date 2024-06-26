@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/routes/app_routes.dart';
+import 'package:myapp/utils/dark.dart';
+import 'package:myapp/utils/light.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -16,49 +18,8 @@ class _AppState extends State<App> {
       routerConfig: appRouteConfig,
       title: 'Flutter Demo',
       themeMode: ThemeMode.dark,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xffFFD43E),
-          brightness: Brightness.light,
-        ),
-        useMaterial3: true,
-        brightness: Brightness.light,
-        filledButtonTheme: FilledButtonThemeData(
-          style: FilledButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.0)
-            )
-          )
-        ),
-        outlinedButtonTheme: OutlinedButtonThemeData(
-          style: OutlinedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.0)
-            )
-          )
-        )
-      ),
-      darkTheme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xffFFD43E),
-          brightness: Brightness.dark,
-        ),
-        useMaterial3: true,
-        filledButtonTheme: FilledButtonThemeData(
-          style: FilledButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.0)
-            )
-          )
-        ),
-        outlinedButtonTheme: OutlinedButtonThemeData(
-          style: OutlinedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.0)
-            )
-          )
-        )
-      ),
+      theme: lightTheme,
+      darkTheme: darkTheme,
       debugShowCheckedModeBanner: false,
     );
   }

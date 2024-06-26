@@ -93,6 +93,7 @@ class ProfileCard extends StatelessWidget {
                   onPressed: () {},
                   style: OutlinedButton.styleFrom(
                     foregroundColor: Colors.grey,
+                     padding: const EdgeInsets.all(8.0),
                     side: const BorderSide(
                       color: Colors.grey,
                       width: 0.5,
@@ -104,6 +105,7 @@ class ProfileCard extends StatelessWidget {
                 OutlinedButton(
                   onPressed: () {},
                   style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.all(8.0),
                     foregroundColor: Colors.grey,
                     side: const BorderSide(
                       color: Colors.grey,
