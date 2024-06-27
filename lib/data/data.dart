@@ -18,7 +18,7 @@ List<Profile> profileData = [
   Profile(
       id: "p1",
       photoUrl:
-          "https://img.freepik.com/photos-gratuite/homme-grand-angle-coiffure-afro_23-2150677172.jpg?t=st=1719344347~exp=1719347947~hmac=189bea8775eae9b6ae86cd384f3e328570b8721bafde744935817bf2d0c72a35&w=2000",
+          'https://img.freepik.com/photos-gratuite/architecte-interieur-travaillant-hors-du-bureau_23-2150379263.jpg?t=st=1719510150~exp=1719513750~hmac=cc126edc2da7a09a96aa740fcc667734f43c1c721a570730f093fde9ae5f4f54&w=1800',
       name: "Alan Greer",
       bio:
           "UX/UI Designer with a keen eye for detail and a knack for creating visually appealing and user-frie...",

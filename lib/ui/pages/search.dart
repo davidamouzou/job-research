@@ -45,6 +45,7 @@ class _SearchPageState extends State<SearchPage> {
               ],
             ),
           ),
+          const SizedBox(width: 16),
         ],
       ),
       body: SingleChildScrollView(
